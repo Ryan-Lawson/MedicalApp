@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Medical App</string>
+    <string name="YourBMI">Your Results</string>
+    <string name="Click">Calculate</string>
+    <string name="yourtemperature">enter your temperature</string>
+    <string name="yourHeight">Enter your blood pressure</string>
+    <string name="yourHeartbeat">Enter Your Heart Beat/Pulse</string>
+</resources>
