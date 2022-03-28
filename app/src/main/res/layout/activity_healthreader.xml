@@ -40,10 +40,26 @@
             <TextView
                 android:layout_width="203dp"
                 android:layout_height="wrap_content"
-                android:text="@string/yourHeight" />
+                android:text="Enter you Low BP" />
 
             <EditText
                 android:id="@+id/bpText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Here" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="79dp">
+
+            <TextView
+                android:layout_width="203dp"
+                android:layout_height="wrap_content"
+                android:text="Enter your High BP" />
+
+            <EditText
+                android:id="@+id/HighBP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Enter Here" />

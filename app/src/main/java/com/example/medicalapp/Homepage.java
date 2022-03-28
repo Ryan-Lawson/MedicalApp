@@ -19,7 +19,17 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(Homepage.this, Healthreader.class));
+
+
             }
+        });
+        Button settings = (Button) findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                startActivity(new Intent(Homepage.this, Settingspage.class));
+            }
+
         });
     }
 }

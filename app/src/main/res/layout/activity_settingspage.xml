@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settingspage">
+    tools:context=".Settingspage"
+    android:id="@+id/bckcolour">
+
+
 
     <TableLayout
         android:layout_width="0dp"
@@ -28,7 +31,8 @@
                 android:text="Settings page"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
         </TableRow>
 
         <TableRow
@@ -47,7 +51,7 @@
             android:layout_height="match_parent">
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinnerbck"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp" />
@@ -69,7 +73,7 @@
             android:layout_height="match_parent">
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/spinnersize"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp" />
@@ -91,17 +95,19 @@
             android:layout_height="match_parent">
 
             <Spinner
-                android:id="@+id/spinner3"
+                android:id="@+id/spinnercolour"
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp" />
         </TableRow>
 
         <TableRow
+            android:id="@+id/tablerowpadding"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:paddingBottom="145dp">
 
             <Button
                 android:id="@+id/altreaccount"
@@ -121,7 +127,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="Name" />
+                android:text="Name"
+                android:visibility="gone"/>
         </TableRow>
 
         <TableRow
@@ -134,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:visibility="gone"/>
         </TableRow>
 
         <TableRow
@@ -148,7 +156,8 @@
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:text="Save"
+                android:visibility="gone"/>
         </TableRow>
 
         <TableRow
