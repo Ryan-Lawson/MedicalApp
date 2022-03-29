@@ -30,6 +30,7 @@
                 android:id="@+id/TempText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="Enter Here" />
         </TableRow>
 
@@ -46,6 +47,7 @@
                 android:id="@+id/bpText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="Enter Here" />
         </TableRow>
 
@@ -62,6 +64,7 @@
                 android:id="@+id/HighBP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="Enter Here" />
         </TableRow>
 
@@ -78,6 +81,7 @@
                 android:id="@+id/Heartbeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="Enter Here" />
         </TableRow>
 

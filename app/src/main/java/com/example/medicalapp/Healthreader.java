@@ -26,22 +26,22 @@ public class Healthreader extends AppCompatActivity {
 
                 EditText bpText = (EditText) findViewById(R.id.bpText);
 
-                String strbp = TempText.getText().toString();
+                String strbp = bpText.getText().toString();
                 double bloodp =Double.parseDouble(strbp);
 
                 EditText HighBP = (EditText) findViewById(R.id.HighBP);
 
-                String strHbp = TempText.getText().toString();
+                String strHbp = HighBP.getText().toString();
                 double bloodHp =Double.parseDouble(strHbp);
 
                 EditText Heartbeat = (EditText) findViewById(R.id.Heartbeat);
 
-                String strHB = TempText.getText().toString();
+                String strHB = Heartbeat.getText().toString();
                 double HeartB =Double.parseDouble(strHB);
                 String result;
-                if (Temp <= 37 && bloodp < 80 && bloodHp < 120 && HeartB <72) {
+                if ((Temp <= 37) && (bloodp < 80) && (bloodHp < 120) && (HeartB <72)) {
                     result = "you are not at risk =)";
-                } else if (Temp > 37 && Temp <= 38 || bloodp >= 80 && bloodp <= 110 || bloodHp >= 120 && bloodHp <= 180   || HeartB >= 72 && HeartB <= 160) {
+                } else if ((Temp > 37 && Temp <= 38) || (bloodp >= 80 && bloodp <= 110) || (bloodHp >= 120 && bloodHp <= 180)   || (HeartB >= 72 && HeartB <= 160)) {
                         result = "you are at low risk =O";
                 } else {
                     result = "you are at High risk =(";

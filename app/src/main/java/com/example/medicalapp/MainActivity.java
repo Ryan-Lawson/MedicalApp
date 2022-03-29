@@ -37,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
                     EditText editTextTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
                     editTextTextPassword.setVisibility(View.VISIBLE);
 
+                    EditText ageCA = (EditText) findViewById(R.id.ageCA);
+                    ageCA.setVisibility(View.VISIBLE);
+
+                    EditText Phonenumber = (EditText) findViewById(R.id.Phonenumber);
+                    Phonenumber.setVisibility(View.VISIBLE);
+
+                    EditText Address = (EditText) findViewById(R.id.Address);
+                    Address.setVisibility(View.VISIBLE);
+
                     Button Done = (Button) findViewById(R.id.Done);
                     Done.setVisibility(View.VISIBLE);
                 }

@@ -2,6 +2,7 @@ package com.example.medicalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,14 +19,25 @@ public class Settingspage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingspage);
 
+
+
         Button altreaccount = (Button) findViewById(R.id.altreaccount);
         altreaccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText editTextTextPersonName4 = (EditText) findViewById(R.id.editTextTextPersonName4);
-                editTextTextPersonName4.setVisibility(View.VISIBLE);
+                EditText editusername = (EditText) findViewById(R.id.editusername);
+                editusername.setVisibility(View.VISIBLE);
 
-                EditText editTextTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
-                editTextTextPassword.setVisibility(View.VISIBLE);
+                EditText editpassword = (EditText) findViewById(R.id.editpassword);
+                editpassword.setVisibility(View.VISIBLE);
+
+                EditText editage = (EditText) findViewById(R.id.editage);
+                editage.setVisibility(View.VISIBLE);
+
+                EditText editphonenumber = (EditText) findViewById(R.id.editphonenumber);
+                editphonenumber.setVisibility(View.VISIBLE);
+
+                EditText editaddress = (EditText) findViewById(R.id.editaddress);
+                editaddress.setVisibility(View.VISIBLE);
 
                 Button save = (Button) findViewById(R.id.save);
                 save.setVisibility(View.VISIBLE);
@@ -52,24 +64,19 @@ public class Settingspage extends AppCompatActivity {
 
 
         if ( s1.equals("white")) {
-            View view = this.getWindow().getDecorView();
-            view.setBackgroundColor(getColor(255-255-255));
+            this.setTheme(R.style.Theme_AppCompat_Light);
         }
         else if( s1.equals("black")) {
-            View view = this.getWindow().getDecorView();
-            view.setBackgroundColor(getColor(0-0-0));
+            this.setTheme(R.style.Theme_AppCompat_DayNight);
         }
         else if( s1.equals("blue")) {
-            View view = this.getWindow().getDecorView();
-            view.setBackgroundColor(getColor(0-0-255));
+            this.setTheme(R.style.Blue);
         }
         else if( s1.equals("green")) {
-            View view = this.getWindow().getDecorView();
-            view.setBackgroundColor(getColor(0-204-0));
+            this.setTheme(R.style.green);
         }
         else if( s1.equals("red")) {
-            View view = this.getWindow().getDecorView();
-            view.setBackgroundColor(getColor(255-0-0));
+            this.setTheme(R.style.red);
         }
 
         String[] arraySpinner2 = new String[] {
