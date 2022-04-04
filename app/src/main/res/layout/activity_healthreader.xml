@@ -10,7 +10,8 @@
         android:layout_width="411dp"
         android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="fill_parent"
@@ -30,8 +31,8 @@
                 android:id="@+id/TempText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="Enter Here" />
+                android:hint="Enter Here"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow
@@ -47,8 +48,8 @@
                 android:id="@+id/bpText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="Enter Here" />
+                android:hint="Enter Here"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow
@@ -64,8 +65,8 @@
                 android:id="@+id/HighBP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="Enter Here" />
+                android:hint="Enter Here"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow
@@ -81,8 +82,8 @@
                 android:id="@+id/Heartbeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="Enter Here" />
+                android:hint="Enter Here"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow
@@ -108,7 +109,63 @@
                 android:layout_height="wrap_content"
                 android:text="@string/YourBMI" />
 
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMS or EMAIL"/>
+
         </TableRow>
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:hint="GP NUMBER"
+                android:inputType="number"
+                android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/smsText"
+            android:layout_width="207dp"
+            android:hint="Text MSG"
+            android:inputType="textLongMessage|text"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sendSMS"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:text="SEND"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/emailadd"
+            android:hint="Email address"
+            android:inputType="textEmailAddress"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/subject"
+            android:layout_width="207dp"
+            android:hint="Subject"
+            android:inputType="textLongMessage|text"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/Message"
+            android:layout_width="207dp"
+            android:hint="Message"
+            android:inputType="textLongMessage|text"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sendEmail"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:text="SEND"
+            android:visibility="gone" />
+
+
+
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

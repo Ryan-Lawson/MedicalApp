@@ -1,8 +1,10 @@
 package com.example.medicalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
-import android.content.res.Resources;
+
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,23 +13,39 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Settingspage extends AppCompatActivity {
+    databasehelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingspage);
 
+        Button save = (Button) findViewById(R.id.save);
+        TextView editusername = (TextView) findViewById(R.id.editusername);
+        EditText editpassword = (EditText) findViewById(R.id.editpassword);
+        EditText editage = (EditText) findViewById(R.id.editage);
+        EditText editphonenumber = (EditText) findViewById(R.id.editphonenumber);
+        EditText editaddress = (EditText) findViewById(R.id.editaddress);
 
+        String username = getIntent().getStringExtra("USER_NAME");
+        String password = getIntent().getStringExtra("PASS_WORD");
 
         Button altreaccount = (Button) findViewById(R.id.altreaccount);
         altreaccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText editusername = (EditText) findViewById(R.id.editusername);
+                TextView editusername = (TextView) findViewById(R.id.editusername);
+                editusername.setText(username);
                 editusername.setVisibility(View.VISIBLE);
 
                 EditText editpassword = (EditText) findViewById(R.id.editpassword);
+                editpassword.setText(password);
                 editpassword.setVisibility(View.VISIBLE);
 
                 EditText editage = (EditText) findViewById(R.id.editage);
@@ -43,60 +61,53 @@ public class Settingspage extends AppCompatActivity {
                 save.setVisibility(View.VISIBLE);
 
                 TableRow tablerowpadding = (TableRow) findViewById(R.id.tablerowpadding);
-                tablerowpadding.setPadding(0,0,0, 0);
+                tablerowpadding.setPadding(0, 0, 0, 0);
             }
         });
-            String[] arraySpinner = new String[] {
-                "white", "black", "blue", "green", "red"
-        };
-        Spinner s1 = (Spinner) findViewById(R.id.spinnerbck);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        s1.setAdapter(adapter);
-        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            public void onItemSelected(AdapterView<?> arg0,View arg1, int arg2, long arg3) {
-                int index = s1.getSelectedItemPosition();
-                //Toast.makeText(getBaseContext(), "You have seleted item :" + months[index] , Toast.LENGTH_SHORT).show();
+        final List<String> states = Arrays.asList("white", "black");
+
+        final Spinner spinner = (Spinner) findViewById(R.id.spinnerbck);
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, states);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String newitem = spinner.getSelectedItem().toString();
+                if (newitem == "white") {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else if (newitem == "black") {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+
+                Toast.makeText(Settingspage.this, "Theme changed to " + newitem, Toast.LENGTH_SHORT).show();
             }
-            public void onNothingSelected(AdapterView<?>arg0) {}
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
         });
+        save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String userN = editusername.getText().toString();
+                String password = editpassword.getText().toString();
+                String age = editage.getText().toString();
+                String phoneN = editphonenumber.getText().toString();
+                String address = editaddress.getText().toString();
+
+                boolean checkupdate = DB.updateuserdata(userN, password, age, phoneN, address);
+                if (checkupdate==true)
+                    Toast.makeText(Settingspage.this, "Information updated", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(Settingspage.this, "Information failed to update", Toast.LENGTH_SHORT).show();
+            }
 
 
-        if ( s1.equals("white")) {
-            this.setTheme(R.style.Theme_AppCompat_Light);
-        }
-        else if( s1.equals("black")) {
-            this.setTheme(R.style.Theme_AppCompat_DayNight);
-        }
-        else if( s1.equals("blue")) {
-            this.setTheme(R.style.Blue);
-        }
-        else if( s1.equals("green")) {
-            this.setTheme(R.style.green);
-        }
-        else if( s1.equals("red")) {
-            this.setTheme(R.style.red);
-        }
-
-        String[] arraySpinner2 = new String[] {
-                "20", "18", "16", "14", "12"
-        };
-        Spinner ssize = (Spinner) findViewById(R.id.spinnersize);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner2);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ssize.setAdapter(adapter2);
-
-        String[] arraySpinner3 = new String[] {
-                "black", "white", "blue", "green", "red"
-        };
-        Spinner scolour = (Spinner) findViewById(R.id.spinnercolour);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner3);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        scolour.setAdapter(adapter2);
+        });
     }
 }
-
 
