@@ -68,15 +68,15 @@ public class databasehelper extends SQLiteOpenHelper {
     public boolean updateuserdata(String COLUMN_USER_USERNAME, String COLUMN_USER_PASSWORD, String COLUMN_USER_AGE, String COLUMN_USER_PHONENUMBER, String COLUMN_USER_ADDRESS) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("COLUMN_USER_USERNAME", COLUMN_USER_USERNAME);
-        cv.put("COLUMN_USER_PASSWORD", COLUMN_USER_PASSWORD);
-        cv.put("COLUMN_USER_AGE", COLUMN_USER_AGE);
-        cv.put("COLUMN_USER_PHONENUMBER", COLUMN_USER_PHONENUMBER);
-        cv.put("COLUMN_USER_ADDRESS", COLUMN_USER_ADDRESS);
-        Cursor cursor = db.rawQuery("select * from USER_TABLE where COLUMN_USER_USERNAME = ?", new String[]{COLUMN_USER_USERNAME});
+        cv.put(this.COLUMN_USER_USERNAME, COLUMN_USER_USERNAME);
+        cv.put(this.COLUMN_USER_PASSWORD, COLUMN_USER_PASSWORD);
+        cv.put(this.COLUMN_USER_AGE, COLUMN_USER_AGE);
+        cv.put(this.COLUMN_USER_PHONENUMBER, COLUMN_USER_PHONENUMBER);
+        cv.put(this.COLUMN_USER_ADDRESS, COLUMN_USER_ADDRESS);
+        Cursor cursor = db.rawQuery("select * from USER_TABLE where USER_USERNAME = ?", new String[]{COLUMN_USER_USERNAME});
 
         if (cursor.getCount() > 0) {
-            long result = db.update("USER_TABLE", cv, "COLUMN_USER_USERNAME=?", new String[]{COLUMN_USER_USERNAME});
+            long result = db.update("USER_TABLE", cv, "USER_USERNAME=?", new String[]{COLUMN_USER_USERNAME});
             if (result == -1) {
                 return false;
             } else {

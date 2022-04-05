@@ -20,13 +20,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Settingspage extends AppCompatActivity {
-    databasehelper DB;
+    databasehelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingspage);
-
+        db = new databasehelper(this);
         Button save = (Button) findViewById(R.id.save);
         TextView editusername = (TextView) findViewById(R.id.editusername);
         EditText editpassword = (EditText) findViewById(R.id.editpassword);
@@ -99,11 +99,13 @@ public class Settingspage extends AppCompatActivity {
                 String phoneN = editphonenumber.getText().toString();
                 String address = editaddress.getText().toString();
 
-                boolean checkupdate = DB.updateuserdata(userN, password, age, phoneN, address);
+                Boolean checkupdate = db.updateuserdata(userN, password, age, phoneN, address);
+
                 if (checkupdate==true)
                     Toast.makeText(Settingspage.this, "Information updated", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(Settingspage.this, "Information failed to update", Toast.LENGTH_SHORT).show();
+
             }
 
 
