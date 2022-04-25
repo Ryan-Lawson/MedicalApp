@@ -22,6 +22,7 @@ public class databasehelper extends SQLiteOpenHelper {
     }
 
     @Override
+    /** method that defines the values in the table for the database and what values they hold**/
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "Create Table " + USER_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_USERNAME + " TEXT, " + COLUMN_USER_PASSWORD + " TEXT, " + COLUMN_USER_AGE + " INT, " + COLUMN_USER_PHONENUMBER + " INT, " + COLUMN_USER_ADDRESS + " TEXT, " + COLUMN_USER_SMSEMAIL + " BOOL)";
 
@@ -32,7 +33,7 @@ public class databasehelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-
+    /** Function for adding a new Usermodel on each account created separating the data into users**/
     public boolean addOne(Usermodel usermodel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -53,7 +54,7 @@ public class databasehelper extends SQLiteOpenHelper {
         }
 
     }
-
+    /** Function for verifying the details that a user has inputted to make sure thier correct**/
     public boolean checkusernamepassword(String COLUMN_USER_USERNAME, String COLUMN_USER_PASSWORD) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?", new String[]{COLUMN_USER_USERNAME, COLUMN_USER_PASSWORD});
@@ -64,7 +65,7 @@ public class databasehelper extends SQLiteOpenHelper {
         }
 
     }
-
+    /**Function for updating the users details on the settings page by identifying the users account and changing the values in that dataset**/
     public boolean updateuserdata(String COLUMN_USER_USERNAME, String COLUMN_USER_PASSWORD, String COLUMN_USER_AGE, String COLUMN_USER_PHONENUMBER, String COLUMN_USER_ADDRESS) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

@@ -70,8 +70,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="340dp"
-                app:srcCompat="@drawable/medical"
-                tools:srcCompat="@drawable/medical" />
+                app:srcCompat="@drawable/picture1"
+                tools:srcCompat="@drawable/picture1" />
         </TableRow>
 
         <TableRow

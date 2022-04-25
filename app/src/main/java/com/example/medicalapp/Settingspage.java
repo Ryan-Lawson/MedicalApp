@@ -37,6 +37,8 @@ public class Settingspage extends AppCompatActivity {
         String username = getIntent().getStringExtra("USER_NAME");
         String password = getIntent().getStringExtra("PASS_WORD");
 
+        /**on click method for making all the information fields appear so the user can update thier details
+         **/
         Button altreaccount = (Button) findViewById(R.id.altreaccount);
         altreaccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,7 +69,7 @@ public class Settingspage extends AppCompatActivity {
         final List<String> states = Arrays.asList("white", "black");
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinnerbck);
-
+        /** array storing details for the spinner**/
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, states);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -75,6 +77,7 @@ public class Settingspage extends AppCompatActivity {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
+            /** on select method for spinner to cahnge the theme of the application on spinner selection**/
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String newitem = spinner.getSelectedItem().toString();
                 if (newitem == "white") {
@@ -91,6 +94,7 @@ public class Settingspage extends AppCompatActivity {
 
             }
         });
+        /** on click method calls function from database to change users details based ion what is inputted into the text fields**/
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String userN = editusername.getText().toString();

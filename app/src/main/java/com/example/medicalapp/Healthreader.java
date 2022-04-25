@@ -31,85 +31,97 @@ public class Healthreader extends AppCompatActivity {
 
         /** on  imagebutton click set the values of strings to intergers*/
         Button imageButton = (Button) findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                EditText TempText = (EditText) findViewById(R.id.TempText);
-                Switch switch1 = (Switch) findViewById(R.id.switch1);
+        try {
 
-                String strTemp = TempText.getText().toString();
-                double Temp = Double.parseDouble(strTemp);
 
-                EditText bpText = (EditText) findViewById(R.id.bpText);
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    EditText TempText = (EditText) findViewById(R.id.TempText);
+                    Switch switch1 = (Switch) findViewById(R.id.switch1);
+                    EditText bpText = (EditText) findViewById(R.id.bpText);
+                    EditText HighBP = (EditText) findViewById(R.id.HighBP);
+                    EditText Heartbeat = (EditText) findViewById(R.id.Heartbeat);
 
-                String strbp = bpText.getText().toString();
-                double bloodp = Double.parseDouble(strbp);
-
-                EditText HighBP = (EditText) findViewById(R.id.HighBP);
-
-                String strHbp = HighBP.getText().toString();
-                double bloodHp = Double.parseDouble(strHbp);
-
-                EditText Heartbeat = (EditText) findViewById(R.id.Heartbeat);
-
-                String strHB = Heartbeat.getText().toString();
-                double HeartB = Double.parseDouble(strHB);
-                String result;
-                /**  make the email and message tab set to gone so thier not displayed for when the user does another test*/
-                EditText emailadd = (EditText) findViewById(R.id.emailadd);
-                emailadd.setVisibility(View.GONE);
-                EditText subject = (EditText) findViewById(R.id.subject);
-                subject.setVisibility(View.GONE);
-                EditText Message = (EditText) findViewById(R.id.Message);
-                Message.setVisibility(View.GONE);
-                Button sendEmail = (Button) findViewById(R.id.sendEmail);
-                sendEmail.setVisibility(View.GONE);
-
-                EditText phoneNumber = (EditText) findViewById(R.id.phoneNumber);
-                phoneNumber.setVisibility(View.GONE);
-                EditText smsText = (EditText) findViewById(R.id.smsText);
-                smsText.setVisibility(View.GONE);
-                Button sendSMS = (Button) findViewById(R.id.sendSMS);
-                sendSMS.setVisibility(View.GONE);
-
-                /**  if statement determining the results for the healthreader using the intergers that where taken form the textfields*/
-                if ((Temp <= 37) && (bloodp < 80) && (bloodHp < 120) && (HeartB < 72)) {
-                    result = "you are not at risk =)";
-
-                } else if ((Temp > 37 && Temp <= 38) || (bloodp >= 80 && bloodp <= 110) || (bloodHp >= 120 && bloodHp <= 180) || (HeartB >= 72 && HeartB <= 160)) {
-                    result = "you are at low risk =O";
-                } else {
-                    if (switch1.isChecked()) {
-
-                        emailadd.setVisibility(View.VISIBLE);
-
-                        subject.setVisibility(View.VISIBLE);
-
-                        Message.setVisibility(View.VISIBLE);
-
-                        sendEmail.setVisibility(View.VISIBLE);
-                    }
-                    /**  if the user had the switch unselected for a text msg then display the txt msg fields*/
+                    if ((TempText == null) && (bpText == null) && (HighBP == null) && (Heartbeat == null))
+                        Toast.makeText(Healthreader.this, "please enter valid results", Toast.LENGTH_SHORT).show();
                     else {
 
-                        phoneNumber.setVisibility(View.VISIBLE);
 
-                        smsText.setVisibility(View.VISIBLE);
+                        String strTemp = TempText.getText().toString();
+                        double Temp = Double.parseDouble(strTemp);
 
-                        sendSMS.setVisibility(View.VISIBLE);
+
+                        String strbp = bpText.getText().toString();
+                        double bloodp = Double.parseDouble(strbp);
+
+
+                        String strHbp = HighBP.getText().toString();
+                        double bloodHp = Double.parseDouble(strHbp);
+
+
+                        String strHB = Heartbeat.getText().toString();
+                        double HeartB = Double.parseDouble(strHB);
+                        String result;
+                        /**  make the email and message tab set to gone so thier not displayed for when the user does another test*/
+                        EditText emailadd = (EditText) findViewById(R.id.emailadd);
+                        emailadd.setVisibility(View.GONE);
+                        EditText subject = (EditText) findViewById(R.id.subject);
+                        subject.setVisibility(View.GONE);
+                        EditText Message = (EditText) findViewById(R.id.Message);
+                        Message.setVisibility(View.GONE);
+                        Button sendEmail = (Button) findViewById(R.id.sendEmail);
+                        sendEmail.setVisibility(View.GONE);
+
+                        EditText phoneNumber = (EditText) findViewById(R.id.phoneNumber);
+                        phoneNumber.setVisibility(View.GONE);
+                        EditText smsText = (EditText) findViewById(R.id.smsText);
+                        smsText.setVisibility(View.GONE);
+                        Button sendSMS = (Button) findViewById(R.id.sendSMS);
+                        sendSMS.setVisibility(View.GONE);
+
+                        /**  if statement determining the results for the healthreader using the intergers that where taken form the textfields*/
+
+                        if ((Temp <= 37) && (bloodp < 80) && (bloodHp < 120) && (HeartB < 72)) {
+                            result = "you are not at risk =)";
+
+                        } else if ((Temp > 37 && Temp <= 38) || (bloodp >= 80 && bloodp <= 110) || (bloodHp >= 120 && bloodHp <= 180) || (HeartB >= 72 && HeartB <= 160)) {
+                            result = "you are at low risk =O";
+                        } else {
+                            if (switch1.isChecked()) {
+
+                                emailadd.setVisibility(View.VISIBLE);
+
+                                subject.setVisibility(View.VISIBLE);
+
+                                Message.setVisibility(View.VISIBLE);
+
+                                sendEmail.setVisibility(View.VISIBLE);
+                            }
+                            /**  if the user had the switch unselected for a text msg then display the txt msg fields*/
+                            else {
+
+                                phoneNumber.setVisibility(View.VISIBLE);
+
+                                smsText.setVisibility(View.VISIBLE);
+
+                                sendSMS.setVisibility(View.VISIBLE);
+
+                            }
+
+                            result = "you are at High risk =(";
+                        }
+                        /** prints the result of the health reader out */
+                        TextView BMIresult = (TextView) findViewById(R.id.BMIresult);
+                        BMIresult.setText(result);
+                        /** if the user had the switch ticked for email then if a high risk is the result display email fields */
 
                     }
-
-                    result = "you are at High risk =(";
                 }
-                /** prints the result of the health reader out */
-                TextView BMIresult = (TextView) findViewById(R.id.BMIresult);
-                BMIresult.setText(result);
-                /** if the user had the switch ticked for email then if a high risk is the result display email fields */
-
-                }
-
-        });
-
+            });
+        }
+        catch (Exception e){
+            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
+        }
         EditText phoneNumber = (EditText) findViewById(R.id.phoneNumber);
         EditText smsText = (EditText) findViewById(R.id.smsText);
         Button sendSMS = (Button) findViewById(R.id.sendSMS);
